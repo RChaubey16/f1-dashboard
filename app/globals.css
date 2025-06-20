@@ -1,17 +1,16 @@
 /* Inter font */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 /* Urbanist font */
 @import url("https://fonts.googleapis.com/css2?family=Urbanist&display=swap");
 /* Days One font */
 @import url("https://fonts.googleapis.com/css2?family=Days+One&display=swap");
-
 
 @import "tailwindcss";
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --color-portage: #A294F9;
+  --color-portage: #a294f9;
 }
 
 @theme inline {
@@ -23,15 +22,15 @@
   /* Custom Styles */
 
   /* Fonts */
-  --font-inter: 'Inter', Arial, Helvetica, sans-serif;
-  --font-urbanist: 'Urbanist', Arial, Helvetica, sans-serif;
-  --font-days-one: 'Days One', Arial, Helvetica, sans-serif;
+  --font-inter: "Inter", Arial, Helvetica, sans-serif;
+  --font-urbanist: "Urbanist", Arial, Helvetica, sans-serif;
+  --font-days-one: "Days One", Arial, Helvetica, sans-serif;
 
   /* Typography */
   --text-xxl: 28px;
 
   /* Colors */
-  --color-primary: #4A628A;
+  --color-primary: #4a628a;
   --color-gray: #808080;
 
   /* Shadows */
@@ -53,8 +52,12 @@
 }
 
 @layer components {
+  /* .stats-card {
+    @apply w-[350px] h-[120px] p-4 flex justify-between items-center gap-12 rounded-[10px] bg-white overflow-hidden;
+  } */
+
   .stats-card {
-    @apply w-fit p-4 flex items-center gap-12 rounded-[10px] bg-white;
+    @apply w-full max-w-[350px] h-[120px] p-4 flex justify-between items-center gap-12 rounded-[10px] bg-white overflow-hidden;
   }
 
   .logo-box {

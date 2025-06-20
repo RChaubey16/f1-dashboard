@@ -1,4 +1,5 @@
 import LogoBox from "./LogoBox";
+import DriverLogoBox from "./DriverLogoBox";
 
 type StatsCardProps = {
   cardLabel: string;
@@ -8,7 +9,13 @@ type StatsCardProps = {
   logoType: string;
 };
 
-const StatsCard = ({ cardLabel, cardTitle, points, logo, logoType }: StatsCardProps) => {
+const StatsCard = ({
+  cardLabel,
+  cardTitle,
+  points,
+  logo,
+  logoType,
+}: StatsCardProps) => {
   return (
     <div className="stats-card">
       <div className="space-y-5">
@@ -19,7 +26,9 @@ const StatsCard = ({ cardLabel, cardTitle, points, logo, logoType }: StatsCardPr
         <p className="points-text">{points} Pts</p>
       </div>
 
-      <LogoBox logo={logo} logoAltText={cardTitle} />
+      {logoType === "team" && <LogoBox logo={logo} logoAltText={cardTitle} />}
+      
+      {logoType === "driver" && <DriverLogoBox logo={logo} logoAltText={cardTitle} />}
     </div>
   );
 };
