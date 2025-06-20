@@ -1,8 +1,17 @@
+/* Inter font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+/* Urbanist font */
+@import url("https://fonts.googleapis.com/css2?family=Urbanist&display=swap");
+/* Days One font */
+@import url("https://fonts.googleapis.com/css2?family=Days+One&display=swap");
+
+
 @import "tailwindcss";
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --color-portage: #A294F9;
 }
 
 @theme inline {
@@ -10,6 +19,47 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Custom Styles */
+
+  /* Fonts */
+  --font-inter: 'Inter', Arial, Helvetica, sans-serif;
+  --font-urbanist: 'Urbanist', Arial, Helvetica, sans-serif;
+  --font-days-one: 'Days One', Arial, Helvetica, sans-serif;
+
+  /* Typography */
+  --text-xxl: 28px;
+
+  /* Colors */
+  --color-primary: #4A628A;
+  --color-gray: #808080;
+
+  /* Shadows */
+  --shadow-logo-box: inset 4px 4px 6px 0px var(--color-portage);
+}
+
+@layer utilities {
+  .label-text {
+    @apply font-inter text-sm font-light leading-5 text-gray;
+  }
+
+  .title-text {
+    @apply font-urbanist text-[22px] font-medium leading-5 text-primary;
+  }
+
+  .points-text {
+    @apply font-days-one text-xxl font-medium leading-5 text-primary;
+  }
+}
+
+@layer components {
+  .stats-card {
+    @apply w-fit p-4 flex items-center gap-12 rounded-[10px] bg-white;
+  }
+
+  .logo-box {
+    @apply max-w-20 max-h-20 p-4 rounded-full bg-white shadow-logo-box;
+  }
 }
 
 @media (prefers-color-scheme: dark) {

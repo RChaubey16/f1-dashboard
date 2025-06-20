@@ -1,21 +1,25 @@
 import LogoBox from "./LogoBox";
 
-const StatsCard = () => {
+type StatsCardProps = {
+  cardLabel: string;
+  cardTitle: string;
+  points: number;
+  logo: string;
+  logoType: string;
+};
+
+const StatsCard = ({ cardLabel, cardTitle, points, logo, logoType }: StatsCardProps) => {
   return (
-    <div className="border border-red-500 w-fit p-4 flex items-center gap-5 rounded-lg">
-      <div className="border border-blue-500 space-y-5">
+    <div className="stats-card">
+      <div className="space-y-5">
         <div className="space-y-1">
-          {/* Label */}
-          <p>Leading Constructor</p>
-          {/* Title */}
-          <p>McLaren Racing</p>
+          <p className="label-text">{cardLabel}</p>
+          <p className="title-text">{cardTitle}</p>
         </div>
-        {/* Value */}
-        <p>204 Pts</p>
+        <p className="points-text">{points} Pts</p>
       </div>
-      <div>
-        <LogoBox />
-      </div>
+
+      <LogoBox logo={logo} logoAltText={cardTitle} />
     </div>
   );
 };
