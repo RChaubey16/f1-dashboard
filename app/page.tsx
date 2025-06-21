@@ -1,5 +1,6 @@
 import StatsCard from "@/components/StatsCard";;
 import GrandPrixCard from "@/components/GrandPrixCard";
+import ConstructorTable from "@/components/Table";
 
 export default async function Home() {
   return (
@@ -28,6 +29,8 @@ export default async function Home() {
           gpTime="5 days, 12 hours"
         />
       </div>
+
+      <ConstructorTable />
     </>
   );
 }
