@@ -1,4 +1,4 @@
-const ConstructorTable = () => {
+const StandingsTable = () => {
   const data = [
     { position: 1, constructor: "McLaren Racing", points: 222 },
     { position: 2, constructor: "McLaren Racing", points: 222 },
@@ -41,4 +41,4 @@ const ConstructorTable = () => {
   );
 };
 
-export default ConstructorTable;
+export default StandingsTable;

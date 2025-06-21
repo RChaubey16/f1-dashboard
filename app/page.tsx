@@ -1,8 +1,14 @@
-import StatsCard from "@/components/StatsCard";;
+import StatsCard from "@/components/StatsCard";
 import GrandPrixCard from "@/components/GrandPrixCard";
-import ConstructorTable from "@/components/Table";
+import StandingsTable from "@/components/StandingsTable";
+import Tabs from "@/components/TabComponent";
 
 export default async function Home() {
+  const tabItems = [
+    { label: "Constructors", content: <StandingsTable /> },
+    { label: "Drivers", content: <StandingsTable /> },
+  ];
+
   return (
     <>
       <div className="grid grid-cols-1 gap-4 ">
@@ -28,9 +34,8 @@ export default async function Home() {
           gpDate="May 26, 2025"
           gpTime="5 days, 12 hours"
         />
+        <Tabs tabs={tabItems} />
       </div>
-
-      <ConstructorTable />
     </>
   );
 }
