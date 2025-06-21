@@ -60,6 +60,10 @@
     @apply w-full max-w-[350px] h-[120px] p-4 flex justify-between items-center gap-12 rounded-[10px] bg-white overflow-hidden;
   }
 
+  .grand-prix-card {
+    @apply w-full p-4 flex justify-between items-center gap-12 rounded-[10px] bg-white overflow-hidden;
+  }
+
   .logo-box {
     @apply max-w-20 max-h-20 p-4 rounded-full bg-white shadow-logo-box;
   }
