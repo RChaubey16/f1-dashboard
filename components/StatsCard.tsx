@@ -23,7 +23,7 @@ const StatsCard = ({
           <p className="label-text">{cardLabel}</p>
           <p className="title-text">{cardTitle}</p>
         </div>
-        <p className="points-text">{points} Pts</p>
+        <p className="points-text">{points}</p>
       </div>
 
       {logoType === "team" && <LogoBox logo={logo} logoAltText={cardTitle} />}
