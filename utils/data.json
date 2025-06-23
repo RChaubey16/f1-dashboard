@@ -1,0 +1,18 @@
+{
+  "teams": {
+    "mclaren": {
+      "logo": "/teams/mclaren-logo.svg"
+    }
+  },
+  "drivers": {
+    "VER": {
+        "avatar": "/drivers/max-verstappen.svg"
+    },
+    "PIA": {
+        "avatar": "/drivers/oscar-piastri.svg"
+    },
+    "RUS": {
+        "avatar": "/drivers/george-russell.svg"
+    }
+  }
+}

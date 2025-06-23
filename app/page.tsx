@@ -2,6 +2,11 @@ import StatsCard from "@/components/StatsCard";
 import GrandPrixCard from "@/components/GrandPrixCard";
 import StandingsTable from "@/components/StandingsTable";
 import Tabs from "@/components/TabComponent";
+import {
+  getConstructorChampion,
+  getLastFastestLap,
+  getWorldChampion,
+} from "@/utils/helpers";
 
 export default async function Home() {
   const tabItems = [
@@ -9,22 +14,33 @@ export default async function Home() {
     { label: "Drivers", content: <StandingsTable /> },
   ];
 
+  const leadingConstructor = await getConstructorChampion(2025);
+  const leadingDriver = await getWorldChampion(2025);
+  const fastestLap = await getLastFastestLap(2025);
+
   return (
     <>
       <div className="grid grid-cols-1 gap-4 ">
         <StatsCard
           cardLabel="Leading Constructor"
-          cardTitle="McLaren Racing"
-          points={204}
-          logo="/teams/mclaren-logo.svg"
-          logoType="team"
+          cardTitle={leadingConstructor.team}
+          points={leadingConstructor.points}
+          logo={leadingConstructor.logo ?? ""}
+          logoType={leadingConstructor.logoType}
         />
         <StatsCard
           cardLabel="Leading Driver"
-          cardTitle="Max Verstappen"
-          points={204}
-          logo="/drivers/max-verstappen.svg"
-          logoType="driver"
+          cardTitle={leadingDriver.driver}
+          points={leadingDriver.points}
+          logo={leadingDriver.avatar}
+          logoType={leadingDriver.logoType}
+        />
+        <StatsCard
+          cardLabel="Last Fastest Lap"
+          cardTitle={fastestLap.driver}
+          points={fastestLap.time}
+          logo={fastestLap.avatar}
+          logoType={leadingDriver.logoType}
         />
       </div>
 

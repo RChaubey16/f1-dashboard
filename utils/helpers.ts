@@ -5,6 +5,7 @@ import {
   getRaceResults,
   getRaceSchedule,
 } from "f1-api-node";
+import data from "./data.json";
 
 /**
  * Gets the World Champion driver for the specified year
@@ -13,7 +14,17 @@ import {
  */
 export const getWorldChampion = async (year = 2024) => {
   const driverStandings = await getDriverStandings(year);
-  return driverStandings[0];
+  const driver = driverStandings[0];
+  const driverName = driver.driver.trim().slice(0, -3) ?? "";
+  const driverRaceId = driver.driver.trim().slice(-3) ?? "";
+
+  return {
+    ...driver,
+    driver: driverName,
+    avatar:
+      data.drivers[driverRaceId as keyof typeof data.drivers].avatar ?? "",
+    logoType: "driver",
+  };
 };
 
 /**
@@ -23,7 +34,14 @@ export const getWorldChampion = async (year = 2024) => {
  */
 export const getConstructorChampion = async (year = 2024) => {
   const constructorStandings = await getConstructorStandings(year);
-  return constructorStandings[0];
+  const constructor = constructorStandings[0];
+
+  return {
+    ...constructor,
+    logo: data.teams[constructor.team.toLowerCase() as keyof typeof data.teams]
+      .logo,
+    logoType: "team",
+  };
 };
 
 /**
@@ -53,5 +71,15 @@ export const getNextRace = async (year = 2025) => {
  */
 export const getLastFastestLap = async (year = 2025) => {
   const fastestLaps = await getFastestLaps(year);
-  return fastestLaps[fastestLaps.length - 1];
+  const driver = fastestLaps[fastestLaps.length - 1];
+  const driverName = driver.driver.trim().slice(0, -3) ?? "";
+  const driverRaceId = driver.driver.trim().slice(-3) ?? "";
+
+  return {
+    ...driver,
+    driver: driverName,
+    avatar:
+      data.drivers[driverRaceId as keyof typeof data.drivers].avatar ?? "",
+    logoType: "driver",
+  };
 };

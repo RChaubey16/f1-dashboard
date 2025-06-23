@@ -4,7 +4,7 @@ import DriverLogoBox from "./DriverLogoBox";
 type StatsCardProps = {
   cardLabel: string;
   cardTitle: string;
-  points: number;
+  points: number | string;
   logo: string;
   logoType: string;
 };
