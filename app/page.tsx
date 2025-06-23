@@ -5,18 +5,22 @@ import Tabs from "@/components/TabComponent";
 import {
   getConstructorChampion,
   getLastFastestLap,
+  getNextRace,
+  getSeasonCompletionPercentage,
   getWorldChampion,
 } from "@/utils/helpers";
 
 export default async function Home() {
   const tabItems = [
-    { label: "Constructors", content: <StandingsTable /> },
-    { label: "Drivers", content: <StandingsTable /> },
+    { label: "Constructors", content: <StandingsTable standingsType="Constructor" /> },
+    { label: "Drivers", content: <StandingsTable standingsType="Driver" /> },
   ];
 
   const leadingConstructor = await getConstructorChampion(2025);
   const leadingDriver = await getWorldChampion(2025);
   const fastestLap = await getLastFastestLap(2025);
+  const nextRace = await getNextRace(2025)
+  const currentSeasonCompletion = await getSeasonCompletionPercentage(2025)
 
   return (
     <>
@@ -46,9 +50,9 @@ export default async function Home() {
 
       <div className="w-[665px]">
         <GrandPrixCard
-          gpName="Austrian Grand Prix"
-          gpDate="May 26, 2025"
-          gpTime="5 days, 12 hours"
+          gpName={nextRace?.gpName}
+          gpDate={nextRace?.gpDate}
+          gpTime={nextRace?.gpTimeLeft}
         />
         <Tabs tabs={tabItems} />
       </div>

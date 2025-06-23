@@ -2,8 +2,8 @@ import Image from "next/image";
 
 type GrandPrixCardProps = {
   gpName: string;
-  gpDate: string;
-  gpTime: string;
+  gpDate?: string;
+  gpTime?: string;
 };
 
 const GrandPrixCard = ({
