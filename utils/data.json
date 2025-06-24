@@ -2,17 +2,67 @@
   "teams": {
     "mclaren": {
       "logo": "/teams/mclaren-logo.svg"
+    },
+    "alpine": {
+      "logo": "/teams/alpine-logo.svg"
+    },
+    "aston-martin": {
+      "logo": "/teams/aston-martin-logo.svg"
+    },
+    "ferrari": {
+      "logo": "/teams/ferrari-logo.svg"
+    },
+    "haas": {
+      "logo": "/teams/haas-logo.svg"
+    },
+    "mercedes": {
+      "logo": "/teams/mercedes-logo.svg"
+    },
+    "racing-bulls": {
+      "logo": "/teams/racing-bulls-logo.svg"
+    },
+    "redbull-racing": {
+      "logo": "/teams/redbull-racing-logo.svg"
+    },
+    "stake-sauber": {
+      "logo": "/teams/stake-sauber-logo.svg"
+    },
+    "williams": {
+      "logo": "/teams/williams-logo.svg"
     }
   },
   "drivers": {
     "VER": {
-        "avatar": "/drivers/max-verstappen.svg"
+      "avatar": "/drivers/max-verstappen.svg"
     },
     "PIA": {
-        "avatar": "/drivers/oscar-piastri.svg"
+      "avatar": "/drivers/oscar-piastri.svg"
     },
     "RUS": {
-        "avatar": "/drivers/george-russell.svg"
+      "avatar": "/drivers/george-russell.svg"
     }
+  },
+  "countries": {
+    "australia": { "flag": "/flags/australia-flag.svg", "circuit": "" },
+    "austria": { "flag": "/flags/austria-flag.svg", "circuit": "" },
+    "azerbaijan": { "flag": "/flags/azerbaijan-flag.svg", "circuit": "" },
+    "bahrain": { "flag": "/flags/bahrain-flag.svg", "circuit": "" },
+    "belgium": { "flag": "/flags/belgium-flag.svg", "circuit": "" },
+    "brazil": { "flag": "/flags/brazil-flag.svg", "circuit": "" },
+    "britain": { "flag": "/flags/britain-flag.svg", "circuit": "" },
+    "canada": { "flag": "/flags/canada-flag.svg", "circuit": "" },
+    "china": { "flag": "/flags/china-flag.svg", "circuit": "" },
+    "hungary": { "flag": "/flags/hungary-flag.svg", "circuit": "" },
+    "italy": { "flag": "/flags/italy-flag.svg", "circuit": "" },
+    "japan": { "flag": "/flags/japan-flag.svg", "circuit": "" },
+    "mexico": { "flag": "/flags/mexico-flag.svg", "circuit": "" },
+    "monaco": { "flag": "/flags/monaco-flag.svg", "circuit": "" },
+    "netherlands": { "flag": "/flags/netherlands-flag.svg", "circuit": "" },
+    "qatar": { "flag": "/flags/qatar-flag.svg", "circuit": "" },
+    "saudi-arabia": { "flag": "/flags/saudi-arabia-flag.svg", "circuit": "" },
+    "singapore": { "flag": "/flags/singapore-flag.svg", "circuit": "" },
+    "spain": { "flag": "/flags/spain-flag.svg", "circuit": "" },
+    "uae": { "flag": "/flags/uae-flag.svg", "circuit": "" },
+    "usa": { "flag": "/flags/usa-flag.svg", "circuit": "" }
   }
 }
