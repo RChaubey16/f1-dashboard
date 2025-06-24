@@ -23,7 +23,7 @@ const GrandPrixCard = ({
 
       <div>
         <Image
-          src={"/circuits/red-bull-ring.svg"}
+          src={"/circuits/austria-circuit.svg"}
           alt={`logo`}
           width={140}
           height={40}

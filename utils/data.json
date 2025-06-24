@@ -43,26 +43,93 @@
     }
   },
   "countries": {
-    "australia": { "flag": "/flags/australia-flag.svg", "circuit": "" },
-    "austria": { "flag": "/flags/austria-flag.svg", "circuit": "" },
-    "azerbaijan": { "flag": "/flags/azerbaijan-flag.svg", "circuit": "" },
-    "bahrain": { "flag": "/flags/bahrain-flag.svg", "circuit": "" },
-    "belgium": { "flag": "/flags/belgium-flag.svg", "circuit": "" },
-    "brazil": { "flag": "/flags/brazil-flag.svg", "circuit": "" },
-    "britain": { "flag": "/flags/britain-flag.svg", "circuit": "" },
-    "canada": { "flag": "/flags/canada-flag.svg", "circuit": "" },
-    "china": { "flag": "/flags/china-flag.svg", "circuit": "" },
-    "hungary": { "flag": "/flags/hungary-flag.svg", "circuit": "" },
-    "italy": { "flag": "/flags/italy-flag.svg", "circuit": "" },
-    "japan": { "flag": "/flags/japan-flag.svg", "circuit": "" },
-    "mexico": { "flag": "/flags/mexico-flag.svg", "circuit": "" },
-    "monaco": { "flag": "/flags/monaco-flag.svg", "circuit": "" },
-    "netherlands": { "flag": "/flags/netherlands-flag.svg", "circuit": "" },
-    "qatar": { "flag": "/flags/qatar-flag.svg", "circuit": "" },
-    "saudi-arabia": { "flag": "/flags/saudi-arabia-flag.svg", "circuit": "" },
-    "singapore": { "flag": "/flags/singapore-flag.svg", "circuit": "" },
-    "spain": { "flag": "/flags/spain-flag.svg", "circuit": "" },
-    "uae": { "flag": "/flags/uae-flag.svg", "circuit": "" },
-    "usa": { "flag": "/flags/usa-flag.svg", "circuit": "" }
+    "australia": {
+      "flag": "/flags/australia-flag.svg",
+      "circuit": ["/circuits/australia-circuit.svg"]
+    },
+    "austria": {
+      "flag": "/flags/austria-flag.svg",
+      "circuit": ["/circuits/austria-circuit.svg"]
+    },
+    "azerbaijan": {
+      "flag": "/flags/azerbaijan-flag.svg",
+      "circuit": ["/circuits/azerbaijan-circuit.svg"]
+    },
+    "bahrain": {
+      "flag": "/flags/bahrain-flag.svg",
+      "circuit": ["/circuits/bahrain-circuit.svg"]
+    },
+    "belgium": {
+      "flag": "/flags/belgium-flag.svg",
+      "circuit": ["/circuits/belgium-circuit.svg"]
+    },
+    "brazil": {
+      "flag": "/flags/brazil-flag.svg",
+      "circuit": ["/circuits/brazil-circuit.svg"]
+    },
+    "britain": {
+      "flag": "/flags/britain-flag.svg",
+      "circuit": ["/circuits/british-circuit.svg"]
+    },
+    "canada": {
+      "flag": "/flags/canada-flag.svg",
+      "circuit": ["/circuits/canada-circuit.svg"]
+    },
+    "china": {
+      "flag": "/flags/china-flag.svg",
+      "circuit": ["/circuits/china-circuit.svg"]
+    },
+    "hungary": {
+      "flag": "/flags/hungary-flag.svg",
+      "circuit": ["/circuits/hungary-circuit.svg"]
+    },
+    "italy": {
+      "flag": "/flags/italy-flag.svg",
+      "circuit": ["/circuits/monza-circuit.svg", "/circuits/emilia-circuit.svg"]
+    },
+    "japan": {
+      "flag": "/flags/japan-flag.svg",
+      "circuit": ["/circuits/japanese-circuit.svg"]
+    },
+    "mexico": {
+      "flag": "/flags/mexico-flag.svg",
+      "circuit": ["/circuits/mexico-circuit.svg"]
+    },
+    "monaco": {
+      "flag": "/flags/monaco-flag.svg",
+      "circuit": ["/circuits/monaco-circuit.svg"]
+    },
+    "netherlands": {
+      "flag": "/flags/netherlands-flag.svg",
+      "circuit": ["/circuits/netherlands-circuit.svg"]
+    },
+    "qatar": {
+      "flag": "/flags/qatar-flag.svg",
+      "circuit": ["/circuits/qatar-circuit.svg"]
+    },
+    "saudi-arabia": {
+      "flag": "/flags/saudi-arabia-flag.svg",
+      "circuit": ["/circuits/saudi-circuit.svg"]
+    },
+    "singapore": {
+      "flag": "/flags/singapore-flag.svg",
+      "circuit": ["/circuits/singapore-circuit.svg"]
+    },
+    "spain": {
+      "flag": "/flags/spain-flag.svg",
+      "circuit": ["/circuits/spain-circuit.svg"]
+    },
+    "uae": {
+      "flag": "/flags/uae-flag.svg",
+      "circuit": ["/circuits/uae-circuit.svg"]
+    },
+    "usa": {
+      "flag": "/flags/usa-flag.svg",
+      "circuit": [
+        "/circuits/austin-circuit.svg",
+        "/circuits/miami-circuit.svg",
+        "/circuits/las-vegas-circuit.svg"
+      ]
+    }
   }
 }
