@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# F1 Dashboard
+
+A modern, visually appealing Formula 1 dashboard built with Next.js and TypeScript. This project displays F1 driver, team, and race data in an interactive and user-friendly interface.
+
+## Features
+
+- **Current Standings:** View up-to-date driver and constructor standings.
+- **Grand Prix Cards:** Explore details for each Grand Prix, including circuit info and country flags.
+- **Driver & Team Logos:** Instantly recognize drivers and teams with custom SVG logos.
+- **Responsive UI:** Optimized for desktop and mobile devices.
+- **Reusable Components:** Modular React components for easy maintenance and scalability.
+
+## Project Structure
+
+```
+├── app/                # Next.js app directory (pages, layout, global styles)
+├── components/         # Reusable React components (cards, tables, logos, etc.)
+├── public/             # Static assets (SVGs for circuits, drivers, flags, teams)
+├── utils/              # Helper functions and data (JSON, TypeScript helpers)
+├── package.json        # Project metadata and scripts
+├── tsconfig.json       # TypeScript configuration
+├── next.config.ts      # Next.js configuration
+```
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+- [Node.js](https://nodejs.org/) (v18 or higher recommended)
+- [pnpm](https://pnpm.io/) (or use npm/yarn if preferred)
+
+### Installation
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Running the Development Server
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Open [http://localhost:3000](http://localhost:3000) in your browser to see the dashboard.
 
-## Learn More
+### Building for Production
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+pnpm build
+pnpm start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Customization
+- Add or update SVGs in the `public/` directory for new drivers, teams, or circuits.
+- Modify or extend components in `components/` to add new features.
+- Update data in `utils/data.json` as needed.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Contributing
+Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
 
-## Deploy on Vercel
+## License
+[MIT](LICENSE)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+*Made with ❤️ for F1 fans.*
