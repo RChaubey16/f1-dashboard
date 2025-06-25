@@ -10,7 +10,7 @@ const DriverLogoBox = ({
   logoAltText = "",
 }: LogoProps) => {
   return (
-    <div className="relative bottom-[-8] right-[-10]">
+    <div className="relative bottom-[-12] right-[-10] w-[105px]">
       <Image
         src={logo}
         alt={`${logoAltText} logo`}

@@ -17,7 +17,7 @@ const Tabs = ({ tabs }: TabsProps) => {
   return (
     <div className="w-full">
       {/* Tab Headers */}
-      <div className="flex justify-center border-b border-gray-300">
+      <div className="my-5 flex justify-center border-b border-gray-300">
         {tabs.map((tab) => (
           <button
             key={tab.label}
@@ -25,8 +25,8 @@ const Tabs = ({ tabs }: TabsProps) => {
             className={`px-6 py-2 text-xl font-semibold border-b-2 transition-all duration-200
               ${
                 activeTab === tab.label
-                  ? "text-primary border-primary"
-                  : "text-gray-600 border-transparent hover:text-half-baked cursor-pointer"
+                  ? "text-sunset-orange border-sunset-orange"
+                  : "text-gray-600 border-transparent hover:text-sunset-orange cursor-pointer"
               }`}
           >
             {tab.label}
@@ -35,7 +35,7 @@ const Tabs = ({ tabs }: TabsProps) => {
       </div>
 
       {/* Tab Content */}
-      <div className="mt-4">
+      <div className="">
         {tabs.map((tab) =>
           tab.label === activeTab ? (
             <div key={tab.label}>{tab.content}</div>

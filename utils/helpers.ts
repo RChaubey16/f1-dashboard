@@ -34,6 +34,18 @@ export const getConstructorChampion = async (year = 2024) => {
   const constructorStandings = await getConstructorStandings(year);
   const constructor = constructorStandings[0];
 
+  // Adding this statement due to inconsistency in team names from API.
+  if (constructor.team.toLowerCase() === "mclaren mercedes") {
+    constructor.team = "McLaren";
+    return {
+      ...constructor,
+      logo: data.teams[
+        constructor.team.toLowerCase() as keyof  typeof data.teams
+      ].logo,
+      logoType: "team",
+    };
+  }
+
   return {
     ...constructor,
     logo: data.teams[constructor.team.toLowerCase() as keyof typeof data.teams]
@@ -63,12 +75,12 @@ const getRacesForAGivenYear = async (year: number) => {
     const races = data?.MRData?.RaceTable?.Races;
 
     if (!Array.isArray(races)) {
-      throw new Error('Unexpected API response structure');
+      throw new Error("Unexpected API response structure");
     }
 
     return races;
   } catch (error) {
-    console.error('Error fetching race results:', error);
+    console.error("Error fetching race results:", error);
     return [];
   }
 };
@@ -81,12 +93,15 @@ const getTimeLeft = (raceDateTime: Date): string => {
   const now = new Date();
   const diffMs = raceDateTime.getTime() - now.getTime();
 
-  if (diffMs <= 0) return 'Race already occurred';
+  if (diffMs <= 0) return "Race already occurred";
 
   const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
   const hours = Math.floor((diffMs / (1000 * 60 * 60)) % 24);
 
-  return `${String(days).padStart(2, '0')} days, ${String(hours).padStart(2, '0')} hours`;
+  return `${String(days).padStart(2, "0")} days, ${String(hours).padStart(
+    2,
+    "0"
+  )} hours`;
 };
 
 /**
@@ -94,10 +109,10 @@ const getTimeLeft = (raceDateTime: Date): string => {
  * @param date - Date object
  */
 const formatReadableDate = (date: Date): string => {
-  return new Intl.DateTimeFormat('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
+  return new Intl.DateTimeFormat("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
   }).format(date);
 };
 
@@ -117,17 +132,17 @@ export const getNextRace = async (year = 2025) => {
   const now = new Date();
 
   const futureRaces = raceResults
-    .map(race => {
-      const dateStr = race.date.replace(/\//g, '-');
+    .map((race) => {
+      const dateStr = race.date.replace(/\//g, "-");
       const dateTimeStr = `${dateStr}T${race.time}`;
       const raceDateTime = new Date(dateTimeStr);
       return { ...race, raceDateTime };
     })
-    .filter(race => race.raceDateTime > now)
+    .filter((race) => race.raceDateTime > now)
     .sort((a, b) => a.raceDateTime.getTime() - b.raceDateTime.getTime());
 
   if (futureRaces.length === 0) {
-    console.log('No upcoming races');
+    console.log("No upcoming races");
     return null;
   }
 
@@ -169,7 +184,10 @@ export const getLastFastestLap = async (year = 2025) => {
  * @returns The standings data for the specified year and type.
  */
 export const getStandings = async (year = 2025, type = "Constructor") => {
-  const standings = type.toLowerCase() === "constructor" ? await getConstructorStandings(year) : await getDriverStandings(year);
+  const standings =
+    type.toLowerCase() === "constructor"
+      ? await getConstructorStandings(year)
+      : await getDriverStandings(year);
   return standings;
 };
 
@@ -179,13 +197,15 @@ export const getStandings = async (year = 2025, type = "Constructor") => {
  * @param year - The year of the season (defaults to 2025)
  * @returns A number representing the season completion percentage (0–100)
  */
-export const getSeasonCompletionPercentage = async (year = 2025): Promise<number> => {
+export const getSeasonCompletionPercentage = async (
+  year = 2025
+): Promise<number> => {
   const races = await getRacesForAGivenYear(year);
   const now = new Date();
 
   // Parse and count completed races
-  const completedRaces = races.filter(race => {
-    const dateStr = race.date.replace(/\//g, '-'); // Convert to YYYY-MM-DD
+  const completedRaces = races.filter((race) => {
+    const dateStr = race.date.replace(/\//g, "-"); // Convert to YYYY-MM-DD
     const raceDateTime = new Date(`${dateStr}T${race.time}`);
     return raceDateTime < now;
   });

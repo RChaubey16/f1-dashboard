@@ -17,7 +17,7 @@ const StandingsTable = async ({ standingsType = "Driver" }) => {
           {standings.map((row) => (
             <tr
               key={row.position}
-              className="table-data-text border-b border-half-baked hover:bg-gray-50 transition"
+              className="table-data-text border-b border-card-border-color hover:bg-gray-50 transition"
             >
               <td className="px-4 py-3">{row.position}</td>
               <td className="px-2 py-3 whitespace-nowrap">

@@ -18,7 +18,7 @@ const GrandPrixCard = ({
           <p className="title-text text-2xl">{gpName}</p>
           <p className="label-text text-sm">{gpDate}</p>
         </div>
-        <p className="points-text">{gpTime}</p>
+        <p className="points-text gp-time">{gpTime}</p>
       </div>
 
       <div>

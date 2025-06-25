@@ -10,7 +10,9 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --color-seashell: #f1f1f1;
   --color-portage: #a294f9;
+  --color-mona-lisa: #ffa599;
 }
 
 @theme inline {
@@ -31,12 +33,17 @@
 
   /* Colors */
   --color-primary: #4a628a;
-  --color-half-baked: #7AB2D3;
+  --color-half-baked: #7ab2d3;
   --color-gray: #808080;
   --color-dove-gray: #666666;
+  --color-card-border-color: #ffbbb2;
+  --color-sunset-orange: #ff5a44;
+  --color-cinder: #15151e;
 
   /* Shadows */
-  --shadow-logo-box: inset 4px 4px 6px 0px var(--color-portage);
+  --shadow-logo-box: inset 4px 4px 6px 0px var(--color-mona-lisa);
+  --shadow-card: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
 @layer utilities {
@@ -45,15 +52,23 @@
   }
 
   .title-text {
-    @apply font-urbanist text-[22px] font-medium leading-5 text-primary;
+    @apply font-urbanist text-[22px] font-medium leading-5 text-cinder;
+  }
+
+  .title-table {
+    @apply font-urbanist text-[22px] font-bold text-center leading-5 text-cinder;
   }
 
   .points-text {
-    @apply font-days-one text-xxl font-medium leading-5 text-primary;
+    @apply font-days-one text-xxl font-medium leading-5 text-dove-gray;
+  }
+
+  .gp-time {
+    @apply text-sunset-orange;
   }
 
   .table-heading-text {
-    @apply font-inter text-lg font-bold text-primary uppercase;
+    @apply font-inter text-lg font-bold text-cinder uppercase;
   }
 
   .table-data-text {
@@ -63,11 +78,11 @@
 
 @layer components {
   .stats-card {
-    @apply w-full max-w-[350px] h-[120px] p-4 flex justify-between items-center gap-12 rounded-[10px] bg-white overflow-hidden;
+    @apply w-full max-w-[350px] h-[120px] p-4 flex justify-between items-center gap-12 rounded-[10px] bg-white border-l-4 border-r-4 border-card-border-color shadow-card overflow-hidden;
   }
 
   .grand-prix-card {
-    @apply w-full p-4 flex justify-between items-center gap-12 rounded-[10px] bg-white overflow-hidden;
+    @apply w-full p-4 flex justify-between items-center gap-12 rounded-[10px] bg-white border-b-4 border-card-border-color overflow-hidden;
   }
 
   .logo-box {
@@ -75,15 +90,15 @@
   }
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
+} */
 
 body {
-  background: var(--background);
+  background: var(--color-seashell);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 
