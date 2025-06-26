@@ -13,18 +13,29 @@ export const getDriveName = (driverName = "") => {
 
 type RaceResult = {
   winner: string;
+  // Remove totalWins from here — it's not per result
+};
+
+type HighestScoringRacerResult = {
+  winner: string;
+  totalWins: number;
 };
 
 /**
  * Determines the driver with the most race wins using the Boyer–Moore majority vote algorithm.
  *
- * @param raceResults - An array of race results, each containing a `winner` string combining the name and race ID.
- * @returns The name of the driver with the highest number of wins.
+ * @param raceResults - An array of race results, each containing a `winner` string combining the driver's name and race ID.
+ * @returns An object containing the name of the top driver (`winner`) and their total number of wins (`totalWins`).
  */
 export const getHighestScoringRacer = (
   raceResults: RaceResult[] = []
-): string => {
-  if (raceResults.length === 0) return "";
+): HighestScoringRacerResult => {
+  if (raceResults.length === 0) {
+    return {
+      winner: "",
+      totalWins: 0,
+    };
+  }
 
   const firstDriver = getDriveName(raceResults[0].winner);
   let winner = firstDriver.name;
@@ -47,5 +58,12 @@ export const getHighestScoringRacer = (
     }
   }
 
-  return winner;
+  const totalRaceWins = raceResults.filter(
+    (item) => item.winner.trim() === `${winner}${winnerRaceId}`
+  );
+
+  return {
+    winner,
+    totalWins: totalRaceWins.length,
+  };
 };

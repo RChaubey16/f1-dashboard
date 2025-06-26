@@ -218,18 +218,28 @@ export const getSeasonCompletionPercentage = async (
   return Math.floor(percentage); // Optional: round down to whole number
 };
 
+type HighestScoringRacerResult = {
+  winner: string;
+  totalWins: number;
+};
+
 /**
  * Retrieves the race results for a given year and determines the driver with the most race wins.
  *
  * @param year - The season year to fetch race results for (defaults to 2025).
- * @returns A promise that resolves to the name of the driver with the most race wins, or an empty string if unavailable.
+ * @returns An object containing the name of the top driver (`winner`) and a count of all their winning races (`totalWins`).
  */
-export const getMostRaceWins = async (year = 2025): Promise<string> => {
+export const getMostRaceWins = async (
+  year = 2025
+): Promise<HighestScoringRacerResult> => {
   try {
     const raceResults = await getRaceResults(year);
     return getHighestScoringRacer(raceResults);
   } catch (error) {
     console.error(`Failed to get most race wins for ${year}:`, error);
-    return "";
+    return {
+      winner: "",
+      totalWins: 0,
+    };
   }
 };
