@@ -40,6 +40,9 @@
     },
     "RUS": {
       "avatar": "/drivers/george-russell.svg"
+    },
+    "NOR": {
+      "avatar": "/drivers/lando-norris.svg"
     }
   },
   "countries": {

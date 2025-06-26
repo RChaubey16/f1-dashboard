@@ -4,8 +4,12 @@ import {
   getFastestLaps,
   getRaceResults,
 } from "f1-api-node";
+import {
+  formatReadableDate,
+  getDriveName,
+  getHighestScoringRacer,
+} from "./utilityFunctions";
 import data from "./data.json";
-import { getDriveName, getHighestScoringRacer } from "./utilityFunctions";
 
 /**
  * Gets the World Champion driver for the specified year
@@ -105,18 +109,6 @@ const getTimeLeft = (raceDateTime: Date): string => {
 };
 
 /**
- * Formats a Date object into "Month Day, Year" format
- * @param date - Date object
- */
-const formatReadableDate = (date: Date): string => {
-  return new Intl.DateTimeFormat("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  }).format(date);
-};
-
-/**
  * Gets the next upcoming Formula 1 Grand Prix for the specified year.
  * Filters out past races, identifies the closest future race, and returns
  * its name, formatted date, and time remaining until it starts.
@@ -164,11 +156,16 @@ export const getNextRace = async (year = 2025) => {
  */
 export const getLastFastestLap = async (year = 2025) => {
   const fastestLaps = await getFastestLaps(year);
-  const driver = fastestLaps[fastestLaps.length - 1];
-  const { name, raceId } = getDriveName(driver.driver);
+
+  if (!Array.isArray(fastestLaps) || fastestLaps.length === 0) return null;
+  const fastestLapDriver = fastestLaps.reduce((min, obj) => {
+    return obj["time"] < min["time"] ? obj : min;
+  });
+
+  const { name, raceId } = getDriveName(fastestLapDriver.driver);
 
   return {
-    ...driver,
+    ...fastestLapDriver,
     driver: name,
     avatar: data.drivers[raceId as keyof typeof data.drivers].avatar ?? "",
     logoType: "driver",
@@ -241,5 +238,33 @@ export const getMostRaceWins = async (
       winner: "",
       totalWins: 0,
     };
+  }
+};
+
+export const getLastRaceStandings = async (year = 2025) => {
+  const url = `https://api.jolpi.ca/ergast/f1/${year}/results`;
+
+  try {
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch race results: ${response.statusText}`);
+    }
+
+    const data = await response.json();
+
+    // You can adjust the path based on the actual API structure
+    const races = data?.MRData?.RaceTable?.Races;
+
+    console.log(`RACESSS`, races);
+
+    if (!Array.isArray(races)) {
+      throw new Error("Unexpected API response structure");
+    }
+
+    return races;
+  } catch (error) {
+    console.error("Error fetching race results:", error);
+    return [];
   }
 };

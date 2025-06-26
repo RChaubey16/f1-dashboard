@@ -1,4 +1,16 @@
 /**
+ * Formats a Date object into "Month Day, Year" format
+ * @param date - Date object
+ */
+export const formatReadableDate = (date: Date): string => {
+  return new Intl.DateTimeFormat("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  }).format(date);
+};
+
+/**
  * Extracts the driver's name and race ID from a single string.
  *
  * @param driverName - A string combining the driver's name and their race ID (e.g., "LewisHamilton001").

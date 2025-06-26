@@ -5,6 +5,7 @@ import Tabs from "@/components/TabComponent";
 import {
   getConstructorChampion,
   getLastFastestLap,
+  getLastRaceStandings,
   getMostRaceWins,
   getNextRace,
   getSeasonCompletionPercentage,
@@ -27,6 +28,7 @@ export default async function Home() {
   const fastestLap = await getLastFastestLap(2025);
   const nextRace = await getNextRace(2025);
   const { winner, totalWins } = await getMostRaceWins(2025);
+  const getLastRaceResults = await getLastRaceStandings(2025)
   const currentSeasonCompletion = await getSeasonCompletionPercentage(2025);
 
   return (
@@ -54,7 +56,7 @@ export default async function Home() {
           logo={leadingDriver.avatar}
           logoType={leadingDriver.logoType}
         />
-      </aside> 
+      </aside>
 
       {/* Middle Column */}
       <div className="p-4 space-y-7.5 order-1 lg:order-2">
