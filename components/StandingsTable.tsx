@@ -4,7 +4,7 @@ const StandingsTable = async ({ standingsType = "Driver" }) => {
   const standings = await getStandings(2025, standingsType)
 
   return (
-    <div className="w-full overflow-x-auto rounded-lg shadow-md bg-white">
+    <div className="w-full h-[590px] overflow-x-auto rounded-lg shadow-md bg-white">
       <table className="min-w-full text-sm text-gray-700">
         <thead className="table-heading-text bg-gray-100">
           <tr>

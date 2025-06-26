@@ -2,8 +2,10 @@ import {
   getConstructorStandings,
   getDriverStandings,
   getFastestLaps,
+  getRaceResults,
 } from "f1-api-node";
 import data from "./data.json";
+import { getDriveName, getHighestScoringRacer } from "./utilityFunctions";
 
 /**
  * Gets the World Champion driver for the specified year
@@ -13,14 +15,12 @@ import data from "./data.json";
 export const getWorldChampion = async (year = 2024) => {
   const driverStandings = await getDriverStandings(year);
   const driver = driverStandings[0];
-  const driverName = driver.driver.trim().slice(0, -3) ?? "";
-  const driverRaceId = driver.driver.trim().slice(-3) ?? "";
+  const { name, raceId } = getDriveName(driver.driver);
 
   return {
     ...driver,
-    driver: driverName,
-    avatar:
-      data.drivers[driverRaceId as keyof typeof data.drivers].avatar ?? "",
+    driver: name,
+    avatar: data.drivers[raceId as keyof typeof data.drivers].avatar ?? "",
     logoType: "driver",
   };
 };
@@ -40,7 +40,7 @@ export const getConstructorChampion = async (year = 2024) => {
     return {
       ...constructor,
       logo: data.teams[
-        constructor.team.toLowerCase() as keyof  typeof data.teams
+        constructor.team.toLowerCase() as keyof typeof data.teams
       ].logo,
       logoType: "team",
     };
@@ -165,14 +165,12 @@ export const getNextRace = async (year = 2025) => {
 export const getLastFastestLap = async (year = 2025) => {
   const fastestLaps = await getFastestLaps(year);
   const driver = fastestLaps[fastestLaps.length - 1];
-  const driverName = driver.driver.trim().slice(0, -3) ?? "";
-  const driverRaceId = driver.driver.trim().slice(-3) ?? "";
+  const { name, raceId } = getDriveName(driver.driver);
 
   return {
     ...driver,
-    driver: driverName,
-    avatar:
-      data.drivers[driverRaceId as keyof typeof data.drivers].avatar ?? "",
+    driver: name,
+    avatar: data.drivers[raceId as keyof typeof data.drivers].avatar ?? "",
     logoType: "driver",
   };
 };
@@ -218,4 +216,20 @@ export const getSeasonCompletionPercentage = async (
   const percentage = (done / totalRaces) * 100;
 
   return Math.floor(percentage); // Optional: round down to whole number
+};
+
+/**
+ * Retrieves the race results for a given year and determines the driver with the most race wins.
+ *
+ * @param year - The season year to fetch race results for (defaults to 2025).
+ * @returns A promise that resolves to the name of the driver with the most race wins, or an empty string if unavailable.
+ */
+export const getMostRaceWins = async (year = 2025): Promise<string> => {
+  try {
+    const raceResults = await getRaceResults(year);
+    return getHighestScoringRacer(raceResults);
+  } catch (error) {
+    console.error(`Failed to get most race wins for ${year}:`, error);
+    return "";
+  }
 };

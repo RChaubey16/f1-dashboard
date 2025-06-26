@@ -5,6 +5,7 @@ import Tabs from "@/components/TabComponent";
 import {
   getConstructorChampion,
   getLastFastestLap,
+  getMostRaceWins,
   getNextRace,
   getSeasonCompletionPercentage,
   getWorldChampion,
@@ -25,6 +26,7 @@ export default async function Home() {
   const reigningDriver = await getWorldChampion(2024);
   const fastestLap = await getLastFastestLap(2025);
   const nextRace = await getNextRace(2025);
+  const topRaceWinner = await getMostRaceWins(2025);
   const currentSeasonCompletion = await getSeasonCompletionPercentage(2025);
 
   return (
@@ -44,6 +46,13 @@ export default async function Home() {
           points={`${reigningConstructor.points} Pts`}
           logo={reigningConstructor.logo ?? ""}
           logoType={reigningConstructor.logoType}
+        />
+        <StatsCard
+          cardLabel="Most Race Wins"
+          cardTitle={topRaceWinner}
+          points={`4 Wins`}
+          logo={leadingDriver.avatar}
+          logoType={leadingDriver.logoType}
         />
       </aside> 
 
