@@ -240,31 +240,3 @@ export const getMostRaceWins = async (
     };
   }
 };
-
-export const getLastRaceStandings = async (year = 2025) => {
-  const url = `https://api.jolpi.ca/ergast/f1/${year}/results`;
-
-  try {
-    const response = await fetch(url);
-
-    if (!response.ok) {
-      throw new Error(`Failed to fetch race results: ${response.statusText}`);
-    }
-
-    const data = await response.json();
-
-    // You can adjust the path based on the actual API structure
-    const races = data?.MRData?.RaceTable?.Races;
-
-    console.log(`RACESSS`, races);
-
-    if (!Array.isArray(races)) {
-      throw new Error("Unexpected API response structure");
-    }
-
-    return races;
-  } catch (error) {
-    console.error("Error fetching race results:", error);
-    return [];
-  }
-};
